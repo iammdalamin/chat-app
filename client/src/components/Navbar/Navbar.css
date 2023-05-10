@@ -1,0 +1,14 @@
+.navbar{
+    height: 30px;
+    background: aqua;
+    color: #000;
+    padding: 1rem 7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navBrand{
+    font-weight: 700;
+    font-size: 28px;
+}
