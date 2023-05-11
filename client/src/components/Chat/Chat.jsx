@@ -119,20 +119,20 @@ const searchQuery = ()=>{
 
 
     <section className='py-16 shadow-xl'>
-      <div className="container mx-auto flex flex-wrap  w-full justify-start items-start relative">
-        <div className={toggle?'absolute bg-slate-500 pt-4 flex flex-col items-start justify-start w-[9%]  duration-700 gap-5  h-[calc(100vh-135px)] px-4':'absolute bg-slate-500 pt-4 flex flex-col items-start justify-start  w-[30%] duration-700 gap-5  h-[calc(100vh-135px)] px-4'} >
-          <div className='h-15 w-full  p-2 flex items-center justify-between relative'>
+      <div className="container mx-auto flex flex-wrap  w-full justify-start items-start ">
+        <div className={' bg-slate-500 pt-4 flex flex-col items-start justify-start  w-[20%] duration-700 gap-5  h-[calc(100vh-135px)] px-4'} >
+          {/* <div className='h-15 w-full  p-2 flex items-center justify-between relative'>
           <img className='w-10 h-10  rounded-full object-cover' src="https://as1.ftcdn.net/v2/jpg/02/22/85/16/1000_F_222851624_jfoMGbJxwRi5AWGdPgXKSABMnzCQo9RN.jpg" alt="" />
             {
               toggle ?<RxDoubleArrowRight className='cursor-pointer absolute left-16 text-white font-bold' onClick={()=>setToggle(!toggle)} size={25} />:<RxDoubleArrowLeft className='cursor-pointer' onClick={()=>setToggle(!toggle)}  size={25} />
             }
-          </div>
+          </div> */}
           {/* {
             toggle?<AiOutlineSearch size={25} />:<input placeholder='Search...' className='w-full py-2 px-3 border border-gray-400 focus:outline-0 rounded-xl' /> 
 
           }
            */}
-           <div className="relative">
+           <div className="relative w-full">
   <input type="text" className="py-2 pl-8 pr-4 block w-full rounded-md bg-gray-100 border-transparent focus:bg-white focus:border-gray-300 focus:outline-none" placeholder="Search" />
   <div className="absolute inset-y-0 left-0 flex items-center pl-2">
   <AiOutlineSearch size={25} />
@@ -147,7 +147,7 @@ const searchQuery = ()=>{
 
 
 
-        <div className='w-full h-[calc(100vh-135px)] bg-gray-400 pl-20'>
+        <div className='w-[80%] h-[calc(100vh-135px)] bg-gray-400 '>
 
       
        <Navbar />
