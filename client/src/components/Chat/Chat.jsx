@@ -30,7 +30,7 @@ export default function Home() {
   useEffect(() => {
     const getConversations = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/v1/conversation/" + user?.data._id);
+        const res = await axios.get("https://chat-app-hj46.onrender.com/api/v1/conversation/" + user?.data._id);
         setConversations(res.data);
       } catch (err) {
         console.log(err);
@@ -42,7 +42,7 @@ export default function Home() {
   useEffect(() => {
     const getMessages = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/v1/messages/" + currentChat?._id);
+        const res = await axios.get("https://chat-app-hj46.onrender.com/api/v1/messages/" + currentChat?._id);
         setMessages(res.data);
         
       } catch (err) {
@@ -92,7 +92,7 @@ export default function Home() {
     });
      setMessageInput("")
     try {
-      const res = await axios.post("http://localhost:5000/api/v1/message", message);
+      const res = await axios.post("https://chat-app-hj46.onrender.com/api/v1/message", message);
       setMessages([...messages, res.data]);
       setNewMessage("");
     } catch (err) {

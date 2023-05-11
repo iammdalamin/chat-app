@@ -9,7 +9,7 @@ const Conversation = ({conversation,currentUser}) => {
       try {
         const friendId = await conversation?.members.find((m)=>m !==currentUser._id)
 // console.log("friendId",conversation?.members);
-        const res = await axios.get(`http://localhost:5000/api/v1/user/${friendId}` );
+        const res = await axios.get(`https://chat-app-hj46.onrender.com/api/v1/user/${friendId}` );
         setUser(res.data);
       } catch (err) {
         console.log(err);
