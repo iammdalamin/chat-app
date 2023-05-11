@@ -39,7 +39,7 @@ export default function Home() {
       try {
         const res = await axios.get("http://localhost:5000/api/v1/messages/" + currentChat?._id);
         setMessages(res.data);
-        console.log("res.data",res.data);
+        
       } catch (err) {
         console.log(err);
       }

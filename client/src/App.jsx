@@ -12,7 +12,7 @@ const user = getUserDetails()
   return (
   <>
   <BrowserRouter>
-  <Navbar />
+  {/* <Navbar /> */}
         <Routes>
           <Route path='/' element={user? <Chat />: <RegistrationPage />} />
           <Route path="/registration" element={user? <Chat />: <RegistrationPage />} /> 
