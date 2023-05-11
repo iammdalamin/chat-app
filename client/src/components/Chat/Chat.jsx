@@ -10,6 +10,11 @@ import { getUserDetails } from '../../helpers/SessionHelper';
 // const socket = useRef("http://localhost:5001")
 const socket = io.connect("http://localhost:5001");
 import axios from "axios";
+import { BsThreeDotsVertical,BsFillPlusCircleFill } from "react-icons/bs";
+
+import { AiOutlineSend } from "react-icons/ai";
+import Navbar from '../Navbar/Navbar';
+
 
 export default function Home() {
   const [conversations, setConversations] = useState([]);
@@ -18,6 +23,7 @@ export default function Home() {
   const [newMessage, setNewMessage] = useState("");  const [own, setOwn] = useState(true)
   const [currentChat, setCurrentChat] = useState(null);
   const [arrivalMessage, setArrivalMessage] = useState(null);
+
   const user = getUserDetails()
   const scrollRef = useRef();
 
@@ -26,7 +32,6 @@ export default function Home() {
       try {
         const res = await axios.get("http://localhost:5000/api/v1/conversation/" + user?.data._id);
         setConversations(res.data);
-        console.log("conversations",conversations);
       } catch (err) {
         console.log(err);
       }
@@ -104,54 +109,59 @@ export default function Home() {
     });
   }, [socket, messages]);
 
+const searchQuery = ()=>{
 
+}
   return (
-    <div className='chatBox'>
- <div className='chatContainer'>
+    <>
 
 
-<div className="chatBoxLeft">
-  <div className="chatBoxWrapper">
-    <div className="searchChat">
-      <input type="text" /> 
-      <button>Search</button>
-    </div>
-    {conversations?.map((c, i) => (
-      <div key={i} onClick={() => setCurrentChat(c)}>
+    <section className='py-16 shadow-xl'>
+      <div className="container mx-auto flex flex-wrap  w-full justify-start items-start">
+        <div className='relative bg-slate-500 pt-4 flex flex-col items-start justify-start md:w-[32%] w-[15%] duration-700 gap-5  h-[calc(100vh-135px)] px-4' >
+            <input placeholder='Search...' className='w-full py-2 px-3 border border-gray-400 focus:outline-0 rounded-xl' /> 
+          
+            {conversations?.map((c, i) => (
+      <div className='w-full' key={i} onClick={() => setCurrentChat(c)}>
         <Conversation conversation={c} currentUser={user?.data} />
       </div>
     ))}
-  
-  </div>
-</div>
-<div className="chatField">
- {
+        </div>
+
+
+
+        <div className='  w-[68%] h-[calc(100vh-135px)] bg-gray-400'>
+
+      
+       <Navbar />
+
+           {
   currentChat? <><div className="messages">
   {messages?.map((m, i)=>{
-  console.log("Sender", m);
 return  <div key={i} ref={scrollRef}>
               <ChatField message={m} own={m.senderId === user?.data._id}  />
             </div>
 })}
   </div>
-  <div className="chatBoxBottom">
-  <textarea  className="chatMessageInput" placeholder='Write something..' onChange={(e)=>setNewMessage(e.target.value)}></textarea>
-  <button className='sendBtn' onClick={
-    (e)=>handleSubmit(e)}>Send &#8618;</button>
-</div>
+  <div className='w-full px-4 flex justify-center items-center gap-2 text-gray-800  ' >
+            <BsFillPlusCircleFill className=' cursor-pointer' size={30} />
+              <input type="text" value={newMessage} placeholder='Send message...' onChange={(e)=>setNewMessage(e.target.value)} className='w-full p-3 border border-gray-400 focus:outline-0 rounded-xl' />
+              <AiOutlineSend className=' cursor-pointer'  size={30} onClick={
+    (e)=>handleSubmit(e)} />
+           </div>
+ 
 </>: "Please select a conversation"
  }
- 
+
+
+          
+        </div>
+      </div>
+    </section>
 
 
 
 
-</div>
-
-
-</div>
-    </div>
-
-   
+    </>
   );
 }

@@ -36,7 +36,7 @@ const getUser = ( userId)=>{
    return users.find(user=>user.userId === userId)
 }
 io.on("connection",(socket)=>{
-    console.log("User Connected", socket.id);
+    // console.log("User Connected", socket);
     socket.on("addUser", userId=>{
         addUser(userId, socket.id)
         // console.log("users", userId);
@@ -44,7 +44,7 @@ io.on("connection",(socket)=>{
         io.emit("getUsers", users)
     })
     socket.on("sendMessage",({senderId, receiverId, text})=>{
-        console.log(receiverId);
+        // console.log(receiverId);
         const user = getUser(receiverId)
         console.log("data", user);
         io.to(user.socketId).emit("getMessage", {

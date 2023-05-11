@@ -1,67 +1,6 @@
-.chatBox{
-    width: 100%;
-  display: flex;
-  justify-content: center;
-align-items: center;
-margin-top: 2rem;
-}
-
-.chatContainer{
-    width: 1680px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    height: calc(100vh - 70px);
-}
-
-.chat-box{
-    width: 420px;
-    height: auto;
-}
-.chat-box form {
-    display: flex;
-    justify-content: center;
-}
-
-.chatBoxWrapper{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-.chatBoxLeft{
-    flex: 2.5;
-}
-
-.chatField{
-    flex: 4.5;
-}
 
 .messages{
     height: calc(100vh - 320px);
     overflow-y: scroll;
     overflow-x: hidden;
-    padding: 0 6rem 0 0;}
-.chatBoxRight{
-    flex: 3.5;
 }
-.chatBoxBottom{
-    margin-top: 30px;
-    display: flex; 
-    justify-content: space-between;
-    align-items: end;
-}
-.chatMessageInput{
-    padding: 10px;
-    width: 80%;
-    height: 80px;
-    resize: none;
-}
-.chatMessageInput:focus{
-    outline: none;
-}
-.sendBtn{
-    height: 50px;
-    background: aqua;
-    color: #000;
-}
-

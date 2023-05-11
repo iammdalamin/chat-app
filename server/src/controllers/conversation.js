@@ -29,7 +29,7 @@ exports.conversation = async(req,res)=>{
     }
   }
 exports.createMsz = async (req, res) => {
-  console.log("req.body", req.body);
+  // console.log("req.body", req.body);
   const newMessage = new MessageModel(req.body)
   try {
     const savedMessage = await newMessage.save()

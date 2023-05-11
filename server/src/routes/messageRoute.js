@@ -5,7 +5,7 @@ const router = express.Router()
 
 
 router.post("/message", async (req, res) => {
-    console.log("req.body", req.body);
+    // console.log("req.body", req.body);
     const newMessage = new MessageModel(req.body)
     try {
       const savedMessage = await newMessage.save()
@@ -27,7 +27,7 @@ router.get("/all", async (req, res) => {
         
 
 router.get("/messages/:conversationId", async (req, res) => {
-    console.log(req.params);
+    // console.log(req.params);
     try {
       const messages = await MessageModel.find({
         conversationId: req.params.conversationId,

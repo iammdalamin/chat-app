@@ -8,7 +8,7 @@ const Conversation = ({conversation,currentUser}) => {
     const getUser = async () => {
       try {
         const friendId = await conversation?.members.find((m)=>m !==currentUser._id)
-console.log("friendId",conversation?.members);
+// console.log("friendId",conversation?.members);
         const res = await axios.get(`http://localhost:5000/api/v1/user/${friendId}` );
         setUser(res.data);
       } catch (err) {
@@ -19,10 +19,13 @@ console.log("friendId",conversation?.members);
   }, [currentUser]);
 
   return (
-    <div className='conversation'>
-      <img src="https://as1.ftcdn.net/v2/jpg/02/22/85/16/1000_F_222851624_jfoMGbJxwRi5AWGdPgXKSABMnzCQo9RN.jpg" alt="" className="conversationImg" />
-      <span className="conversationName">{user?.data.name}</span>
-    </div>
+  
+
+
+<div className='w-full flex justify-start items-center gap-2 cursor-pointer p-2 hover:bg-gray-200 duration-700  rounded-full md:rounded-none  '>
+<img className='w-12 h-12 rounded-full object-cover' src="https://as1.ftcdn.net/v2/jpg/02/22/85/16/1000_F_222851624_jfoMGbJxwRi5AWGdPgXKSABMnzCQo9RN.jpg" alt="" />
+<h1 className='hidden md:block' >{user?.data.name}</h1>
+</div>
   )
 }
 

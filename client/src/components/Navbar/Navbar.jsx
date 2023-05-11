@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Navbar.css"
-import { Link, NavLink } from 'react-router-dom'
+import { BsThreeDotsVertical,BsFillPlusCircleFill } from "react-icons/bs";
 import { getUserDetails, removeSessions } from '../../helpers/SessionHelper'
 const Navbar = () => {
+  const [toggle , setToggle] = useState(false)
+
     const user = getUserDetails()
     const Logout = ()=>{
         removeSessions()
@@ -10,15 +12,25 @@ const Navbar = () => {
   return (
     <>
  
-    <nav className='bg-sky-500 py-5'>
-      <div className="container mx-auto flex justify-between text-white">
-        <div><NavLink to="/" className={`text-xl font-bold `}>Chat</NavLink></div>
-        <ul>
-        <li>{user ? user.data.name : <NavLink to="/login" >Login</NavLink>}</li>
-        <li onClick={()=> Logout()} className='cursor-pointer'>Logout</li>
-      </ul>
-      </div>
-    </nav>
+ <nav className='w-full h-10 px-6 py-8 bg-gray-800 text-white flex justify-between items-center  '>
+              <div>
+                <h1>{user?.data.name}</h1>
+              </div>
+              <div className='cursor-pointer relative' onClick={()=>setToggle(!toggle)}>
+                
+                <BsThreeDotsVertical size={25} />
+                {
+                  toggle&& 
+                  <div className='w-52 h-auto bg-white text-black shadow-xl absolute p-2 top-8 right-0 '>
+                    <ul className='flex flex-col'>
+                      <li>Delete Conversation</li>
+                      <li>Report Technical Problem</li>
+                    </ul>
+                  </div>
+                }
+              </div>
+           </nav>
+
     </>
    
   )
